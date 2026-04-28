@@ -2956,6 +2956,40 @@ footer .bottom {
     --card-h: 48px;
   }
 }
+@media (max-width: 480px) {
+  /* Hero: reduce padding on very small phones */
+  .hero { min-height: auto; padding: 80px 0 56px; }
+
+  /* Stats: tighter gap */
+  .stats .wrap { gap: 24px 12px; }
+
+  /* Pillars: tabs scroll horizontally */
+  .pillars .tabs { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none; }
+  .pillars .tabs::-webkit-scrollbar { display: none; }
+  .pillars .tab { flex: 0 0 auto; white-space: nowrap; }
+
+  /* Pillars analyze panel: stack big number above heading */
+  .pillars .p-left .p-header { flex-direction: column; gap: 8px; }
+  .pillars .p-left .p-header .panel-n { font-size: 72px; line-height: 1; }
+
+  /* Dashboard: single column on very small screens */
+  .db-grid { grid-template-columns: 1fr; }
+  .db-big { font-size: 28px; }
+
+  /* Report trend footer: go 2-col then single */
+  .rp-trend-foot { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .rp-foot-item.rp-foot-highlight { border-left: none; padding-left: 0; }
+
+  /* Contact buttons: full width stacked */
+  .contact-btns { flex-direction: column; align-items: center; }
+  .contact-btn { width: 100%; max-width: 320px; justify-content: center; }
+}
+@media (max-width: 360px) {
+  /* Tiny phones: dashboard and trend footer single column */
+  .db-grid { grid-template-columns: 1fr; }
+  .rp-trend-foot { grid-template-columns: 1fr; }
+  .rp-foot-item.rp-foot-highlight { border-left: none; padding-left: 0; border-top: 1px solid var(--dark-border); padding-top: 12px; }
+}
 
 /* ============================================================
    Reduced motion
@@ -3004,7 +3038,7 @@ footer .bottom {
   padding: 100px 0;
   text-align: center;
 }
-.contact-cta .eyebrow { color: var(--accent); }
+.contact-cta .eyebrow { color: var(--pimenton-red); }
 .contact-cta .h-xl { color: #fff; }
 .contact-cta .lede { color: rgba(255,255,255,.65); max-width: 520px; margin: 0 auto; }
 .contact-btns {
