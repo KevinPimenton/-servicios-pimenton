@@ -2919,6 +2919,8 @@ footer .bottom {
     filter: none;
   }
   .honeycomb .hex:hover { transform: none; }
+  .honeycomb.reveal .hex,
+  .honeycomb.reveal.in .hex { transform: none; opacity: 1; }
   .honeycomb .hex-content {
     clip-path: none;
     border-radius: var(--r-lg);
@@ -2967,7 +2969,7 @@ footer .bottom {
   .stats .wrap { gap: 24px 12px; }
 
   /* Pillars: tabs scroll horizontally */
-  .pillars .tabs { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none; }
+  .pillars .tabs { overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none; width: 100%; }
   .pillars .tabs::-webkit-scrollbar { display: none; }
   .pillars .tab { flex: 0 0 auto; white-space: nowrap; }
 
