@@ -2997,13 +2997,52 @@ footer .bottom {
 }
 
 /* ============================================================
+   CONTACT CTA SECTION
+   ============================================================ */
+.contact-cta {
+  background: #0d0d0d;
+  padding: 100px 0;
+  text-align: center;
+}
+.contact-cta .eyebrow { color: var(--accent); }
+.contact-cta .h-xl { color: #fff; }
+.contact-cta .lede { color: rgba(255,255,255,.65); max-width: 520px; margin: 0 auto; }
+.contact-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.contact-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+.contact-btn--gmail {
+  background: #fff;
+  color: #1a1a1a;
+}
+.contact-btn--whatsapp {
+  background: #25D366;
+  color: #fff;
+}
+
+/* ============================================================
    PRINT / PDF EXPORT
    ============================================================ */
 @media print {
   @page { size: A4 landscape; margin: 0; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   header, .skip-link, .nav-toggle, .nav-mobile, .nav-backdrop,
-  .scrollhint, .hero-globe-wrap, #exportBtn { display: none !important; }
+  .scrollhint, .hero-globe-wrap { display: none !important; }
   html, body { margin: 0 !important; padding: 0 !important; }
   .print-slide {
     width: 297mm !important;
@@ -3058,6 +3097,7 @@ footer .bottom {
   <a href="#menu" data-sec="menu">Menú</a>
   <a href="#promos" data-sec="promos">Campañas</a>
   <a href="#disputes" data-sec="disputes">Disputas</a>
+  <a href="#contacto" data-sec="contacto">Contacto</a>
 </nav>
 
 <!-- Mobile nav toggle -->
@@ -3074,6 +3114,7 @@ footer .bottom {
   <a href="#menu">Menú</a>
   <a href="#promos">Campañas</a>
   <a href="#disputes">Disputas</a>
+  <a href="#contacto">Contacto</a>
 </nav>
 
 <main id="main">
@@ -4091,6 +4132,27 @@ footer .bottom {
 </section>
 
 
+<!-- CONTACTO -->
+<section class="contact-cta" id="contacto" aria-labelledby="contacto-title">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">¿Listo para crecer?</div>
+      <h2 class="h-xl head-mt" id="contacto-title">Hablemos.</h2>
+      <p class="lede">Contanos en qué etapa está tu operación y te decimos cómo podemos ayudarte.</p>
+    </div>
+    <div class="contact-btns reveal">
+      <a href="mailto:kevin@pimenton.io?subject=Quiero%20saber%20más%20sobre%20Pimentón" class="contact-btn contact-btn--gmail">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Z" stroke="currentColor" stroke-width="1.8"/><path d="m2 7 10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Escribir por email
+      </a>
+      <a href="https://wa.me/+5491168320670" target="_blank" rel="noopener noreferrer" class="contact-btn contact-btn--whatsapp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.18-1.62A11.93 11.93 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.21-1.25-6.22-3.48-8.52Z" fill="#25D366"/><path d="M17.47 14.83c-.26-.13-1.54-.76-1.78-.84-.24-.09-.41-.13-.58.13-.17.26-.65.84-.8 1.01-.15.17-.29.19-.55.06-.26-.13-1.1-.41-2.1-1.3-.77-.69-1.3-1.54-1.45-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.5-.43-.43-.58-.44H9.1c-.15 0-.41.06-.63.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.13.17 1.7 2.59 4.12 3.63.58.25 1.03.4 1.38.51.58.18 1.11.16 1.52.1.46-.07 1.54-.63 1.76-1.24.22-.6.22-1.12.15-1.24-.07-.12-.24-.19-.5-.32Z" fill="#fff"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- FOOTER -->
@@ -4696,102 +4758,6 @@ document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
   show('us', { initial: true });
 })();
 
-/* === Export PDF button (html2canvas + jsPDF) === */
-(function() {
-  var btn = document.createElement('button');
-  btn.id = 'exportBtn';
-  btn.textContent = 'Exportar PDF';
-  btn.style.cssText = [
-    'position:fixed','bottom:24px','right:24px','z-index:9999',
-    'background:#c0392b','color:#fff','border:none','border-radius:8px',
-    'padding:12px 22px','font-size:14px','font-weight:700',
-    'cursor:pointer','box-shadow:0 4px 16px rgba(0,0,0,.25)',
-    'letter-spacing:.04em'
-  ].join(';');
-  document.body.appendChild(btn);
-
-  function loadScript(src) {
-    return new Promise(function(resolve, reject) {
-      var s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = function() { reject(new Error('No se pudo cargar: ' + src)); };
-      document.head.appendChild(s);
-    });
-  }
-
-  btn.addEventListener('click', async function() {
-    btn.textContent = 'Generando…';
-    btn.disabled = true;
-    var toHide = [];
-
-    try {
-      // 1. Forzar todos los elementos animados visibles
-      ['.reveal','.hero .eyebrow','.hero .h-xxl','.hero .lede','.hero .cta-row','.hero-proof'].forEach(function(sel) {
-        document.querySelectorAll(sel).forEach(function(el) {
-          el.style.setProperty('opacity','1','important');
-          el.style.setProperty('transform','none','important');
-          el.style.setProperty('visibility','visible','important');
-        });
-      });
-
-      // 2. Llenar contadores a su valor final
-      var fmt = new Intl.NumberFormat('es-AR');
-      document.querySelectorAll('[data-count]').forEach(function(el) {
-        var target = parseInt(el.dataset.count, 10);
-        var plus = el.dataset.plus === 'true';
-        var suffix = el.dataset.suffix || '';
-        el.textContent = fmt.format(target) + (plus ? '+' : '') + suffix;
-      });
-
-      // 3. Cargar librerías
-      if (typeof html2canvas === 'undefined') {
-        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
-      }
-      if (typeof window.jspdf === 'undefined') {
-        await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-      }
-
-      var jsPDF = window.jspdf.jsPDF;
-      var pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-
-      // 4. Ocultar UI fija durante la captura
-      toHide = Array.from(document.querySelectorAll('header, #exportBtn, .nav-toggle, .nav-mobile, .nav-backdrop, .skip-link, .scrollhint, .hero-globe-wrap'));
-      toHide.forEach(function(el) { el.style.setProperty('display','none','important'); });
-
-      var sections = Array.from(document.querySelectorAll('main > section'));
-
-      for (var i = 0; i < sections.length; i++) {
-        var sec = sections[i];
-        sec.scrollIntoView({ behavior: 'instant' });
-        // Esperar dos frames para que el scroll y el layout se estabilicen
-        await new Promise(function(r) { setTimeout(r, 120); });
-
-        var canvas = await html2canvas(sec, {
-          scale: 2,
-          logging: false,
-          backgroundColor: null,
-          width: sec.offsetWidth,
-          height: sec.offsetHeight
-        });
-
-        if (i > 0) pdf.addPage();
-        pdf.addImage(canvas.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 297, 210);
-      }
-
-      pdf.save('Pimentón — Servicios.pdf');
-
-    } catch(err) {
-      console.error('[ExportPDF] Error:', err);
-      alert('Error al generar el PDF:\n' + err.message + '\n\nAbrí la consola (F12) para más detalles.');
-    } finally {
-      // Siempre restaurar la UI, haya o no error
-      toHide.forEach(function(el) { el.style.removeProperty('display'); });
-      btn.textContent = 'Exportar PDF';
-      btn.disabled = false;
-    }
-  });
-})();
 
 </script>
 </body>
